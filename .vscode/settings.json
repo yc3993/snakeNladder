@@ -72,5 +72,20 @@
         "random": "cpp",
         "set": "cpp"
     },
-    "C_Cpp.errorSquiggles": "Disabled"
+    "C_Cpp.errorSquiggles": "Disabled",
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "gameDBConn",
+            "database": "sys",
+            "username": "root",
+            "password": "442473034Aa@"
+        }
+    ]
 }
