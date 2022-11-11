@@ -13,7 +13,9 @@ export class mysql_transaction{
     public:
         MYSQL* mysql_connection_setup(struct connection_details mysql_details);
         MYSQL_RES* mysql_execute_query(MYSQL *connection, const char *query);
-        void mysql_shutdown(MYSQL *connection, MYSQL_RES *res);
+        void mysql_insertion(MYSQL *connection, const char *query);
+        void mysql_clear_res(MYSQL_RES *res);
+        void mysql_close_conn(MYSQL *connection);
 
 };
 
@@ -24,7 +26,6 @@ MYSQL* mysql_transaction::mysql_connection_setup(struct connection_details mysql
         std::cout << "MYSQL Connection Error: " << mysql_error(connection) << std::endl;
         exit(1);
     }
-    std::cout << "success!" << std::endl;
     return connection;
 }
 
@@ -37,7 +38,18 @@ MYSQL_RES* mysql_transaction::mysql_execute_query(MYSQL *connection, const char 
     return mysql_use_result(connection);
 }
 
-void mysql_transaction::mysql_shutdown(MYSQL *connection, MYSQL_RES *res){
+void mysql_transaction::mysql_insertion(MYSQL *connection, const char *query){
+    if (mysql_query(connection, query)) {
+        std::cout << "MYSQL Query Error: " << mysql_error(connection) << std::endl;
+        mysql_close(connection);
+        exit(1);
+    }   
+}
+
+void mysql_transaction::mysql_clear_res(MYSQL_RES *res){
     mysql_free_result(res);
+}
+
+void mysql_transaction::mysql_close_conn(MYSQL *connection){
     mysql_close(connection);
 }
