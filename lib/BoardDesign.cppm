@@ -19,7 +19,7 @@ class Board {
         int setArea(int n, int m);        
         bool setSnake(std::vector<std::vector<std::tuple<int, int>>> obstracle);
         bool setLadder(std::vector<std::vector<std::tuple<int, int>>> obstracle);  
-        // bool deleteObj(std::vector<int> obstracle);
+        bool deleteObj(tuple<int, int> obstracle, string type);
         // bool addObj(std::vector<int> obstracle);    
     
 };
@@ -34,6 +34,24 @@ int Board::setArea(int n, int m){
     // {
     //     board.push_back(1);
     // }
+}
+
+bool Board::deleteObj(tuple<int, int> obstracle, string type) {
+    if (type == "snake") {
+        if (snake.find(obstracle) == snake.end()) {
+            return false;
+        }    
+        snake.erase(obstracle);
+        return true;   
+    }
+    else if (type == "ladder") {
+        if (ladder.find(obstracle) == ladder.end()) {
+            return false;
+        }
+        ladder.erase(obstracle);
+        return true;
+    }
+    return false;
 }
 
 // bool Board::setSnake(std::vector<std::vector<std::tuple<int, int>>> obstracle) {    
