@@ -1,16 +1,17 @@
+export module gameSaveReload;
+
 #import <string>
 #import <fstream>
 #import <iostream>
 #import <map>
 #import <tuple>
 #import <vector>
-#import <filesystem>
 
 
-class Save_Reload {
+export class Save_Reload {
     public:
         bool gameSave(std::string add, std::string name, int length, int height);
-};
+}
 
 bool Save_Reload::gameSave(std::string add, std::string name, int length, int height) { 
     // check if history already exists
@@ -32,18 +33,3 @@ bool Save_Reload::gameSave(std::string add, std::string name, int length, int he
 
     return true;
 }
-
-
-int main() {
-    Save_Reload obj;
-    std::cout<< obj.gameSave("./gameHistory/", "game2", 1, 1);
-    /*
-    std::ofstream fw("./test.txt", std::ofstream::out);
-    if (fw.is_open()) {
-        fw << "abc" << "\n";
-        fw << "a";
-        fw.close();
-    }
-    */
-}
-
