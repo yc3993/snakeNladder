@@ -7,6 +7,7 @@ export module gameSaveReload;
 #import <map>
 #import <tuple>
 #import <vector>
+#import <sstream>
 
 
 export class Save_Reload {
@@ -101,5 +102,81 @@ bool Save_Reload::gameReload(std::string add, std::string name, int& length, int
                         std::vector<std::vector<std::tuple<int, int>>>& snakes, 
                         std::vector<std::vector<std::tuple<int, int>>>& ladders) {
     
+    std::fstream history;
+    history.open(add+name+".txt",std::ios::in);
+    if (history.is_open()) {
+        std::string line;
 
+        // get length
+        std::getline(history, line);
+        length = std::stoi(line);
+
+        // get height
+        std::getline(history, line);
+        height = std::stoi(line);
+
+        // get players
+        std::getline(history, line);
+        int numOfPlayers = std::stoi(line);
+        for (int i=0; i<numOfPlayers; i++) {
+            std::getline(history, line);
+            std::stringstream sstr(line);
+            std::string substr;
+            // get players names
+            std::getline(sstr, substr, ':');
+            players_names.push_back(substr);
+            //get players positions
+            std::vector<int> temppos;
+            while(sstr.good()) {
+                getline(sstr, substr, ',');
+                temppos.push_back(std::stoi(substr));
+            }
+            if (temppos.size() != 2) {
+                return false;
+            }
+            players.push_back(std::make_tuple(temppos[0], temppos[1]));
+        }
+
+        // get snakes
+        std::getline(history, line);
+        int numOfSnakes = std::stoi(line);
+        for (int i=0; i<numOfSnakes; i++) {
+            std::getline(history, line);
+            line.pop_back();
+            std::stringstream sstr(line);
+            std::string substr;
+            std::vector<std::tuple<int, int>> snake;
+            while(sstr.good()) {
+                getline(sstr, substr, ',');
+                int x = std::stoi(substr);
+                getline(sstr, substr, ',');
+                int y = std::stoi(substr);
+                snake.push_back(std::make_tuple(x, y));
+            }
+            snakes.push_back(snake);
+        }
+
+        // get ladders
+        std::getline(history, line);
+        int numOfLadders = std::stoi(line);
+        for (int i=0; i<numOfLadders; i++) {
+            std::getline(history, line);
+            line.pop_back();
+            std::stringstream sstr(line);
+            std::string substr;
+            std::vector<std::tuple<int, int>> ladder;
+            while(sstr.good()) {
+                getline(sstr, substr, ',');
+                int x = std::stoi(substr);
+                getline(sstr, substr, ',');
+                int y = std::stoi(substr);
+                ladder.push_back(std::make_tuple(x, y));            
+            }
+            ladders.push_back(ladder);
+        }
+        return true;
+    }
+    else {
+        return false;
+    }
 }
