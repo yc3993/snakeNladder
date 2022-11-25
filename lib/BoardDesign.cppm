@@ -1,8 +1,9 @@
 export module BoardDesign;
 
-#import "map"
-#import "tuple"
-#import "vector"
+import "map";
+import "tuple";
+import "vector";
+import "string";
 
 using namespace std;
 
