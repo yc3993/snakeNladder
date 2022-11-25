@@ -1,7 +1,7 @@
 export module DiceLib;
-#import <curses.h>
-#import <iostream>
-#import <unistd.h>
+import "curses.h";
+import "iostream";
+import "unistd.h";
 
 export namespace DiceLib{
     class Dice {
