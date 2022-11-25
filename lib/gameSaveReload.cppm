@@ -1,16 +1,16 @@
 export module gameSaveReload;
 
-#import <string>
-#import <fstream>
-#import <filesystem>
-#import <iostream>
-#import <map>
-#import <tuple>
-#import <vector>
-#import <sstream>
+import "string";
+import "fstream";
+import "filesystem";
+import "iostream";
+import "map";
+import "tuple";
+import "vector";
+import "sstream";
 
-
-export class Save_Reload {
+export namespace GameSaveAndReload{
+class Save_Reload {
     public:
         bool gameSave(std::string add, std::string name, int length, int height, 
                         std::vector<std::tuple<int, int>>& players, std::vector<std::string>& players_names, 
@@ -179,4 +179,5 @@ bool Save_Reload::gameReload(std::string add, std::string name, int& length, int
     else {
         return false;
     }
+}
 }
