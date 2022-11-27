@@ -8,13 +8,14 @@ import "string";
 int main() {
     GameSaveAndReload::Save_Reload o;
     MYSQL_CONN::mysql_transaction obj;
-    MYSQL_CONN::connection_details mysql_info;
+    MYSQL_CuONN::connection_details mysql_info;
     mysql_info.server = "localhost";
     mysql_info.user = "root";
     mysql_info.password = "442473034Aa@";
     mysql_info.database = "sys";
 
-    obj.mysql_connection_setup(mysql_info);
+    bool rr = obj.mysql_connection_setup(mysql_info);
+
     /*
     std::cout << obj.mysql_registration("Yutong", "12", "users", "uname", "pwd") << "\n";
     std::cout << obj.mysql_login("Yutong", "1", "users", "uname", "pwd");

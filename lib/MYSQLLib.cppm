@@ -33,7 +33,7 @@ bool mysql_transaction::mysql_connection_setup(struct connection_details mysql_d
     MYSQL *connection = mysql_init(NULL);
     if (!mysql_real_connect(connection, mysql_details.server, mysql_details.user, mysql_details.password, 
     mysql_details.database, 0, NULL, 0)) {
-        std::cout << "MYSQL Connection Error: " << mysql_error(connection) << std::endl;
+        std::cout << "MYSQL Connection Error" << mysql_error(connection) << std::endl;
         return false;
     }
     this->con = connection;
