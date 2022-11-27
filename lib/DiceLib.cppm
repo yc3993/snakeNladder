@@ -35,24 +35,16 @@ export namespace DiceLib{
         noecho();
         nodelay(stdscr, TRUE);
         scrollok(stdscr, TRUE);
-        printw("Press any key to stop the dice\n");
 
         while (1) {
             if (dice > max_val) {
                 dice = 1;
             }
             if (kbhit()) {
-                printw("%d\r", dice);
-                refresh();
                 break;
             } 
-            else {
-                printw("%d\r", dice);
-                refresh();
-            }
             dice ++;
         }
-        std::cout << "\nyour dice:" << dice <<std::endl;
 
         return dice;
     }

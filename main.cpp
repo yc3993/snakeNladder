@@ -1,4 +1,5 @@
 import MYSQLLib;
+import DiceLib;
 import gameSaveReload;
 import "iostream";
 import "vector";
@@ -6,6 +7,12 @@ import "string";
 
 
 int main() {
+
+
+    DiceLib::Dice d;
+    std::cout<<d.getNum(6) << "\n";
+    std::cout << "dddddd";
+
     GameSaveAndReload::Save_Reload o;
     MYSQL_CONN::mysql_transaction obj;
     MYSQL_CONN::connection_details mysql_info;
@@ -34,6 +41,5 @@ int main() {
     }
 
     obj.mysql_close_conn();
-    
 }
 
