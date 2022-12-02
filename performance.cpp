@@ -17,9 +17,12 @@ using namespace std;
 
 
 int main() {
+    int size = 100;
+    int p_num = 4;
+    std::string his_name = "game3";
     // variables used for game board generation
     std::vector<std::vector<std::tuple<int, int>>> obstracle_snake;
-    for (int i = 0; i < 500; i ++) {
+    for (int i = 0; i < size; i ++) {
         std::vector<std::tuple<int, int>> node;
     //for (int j; j < 2; j ++) {
         tuple<int, int> start;
@@ -34,7 +37,7 @@ int main() {
     }
 
     std::vector<std::vector<std::tuple<int, int>>> obstracle_ladder;
-    for (int i = 1; i < 501; i ++) {
+    for (int i = 1; i < size+1; i ++) {
         std::vector<std::tuple<int, int>> node;
     //for (int j; j < 2; j ++) {
         tuple<int, int> start;
@@ -53,7 +56,7 @@ int main() {
     std::vector<std::tuple<int, int>> pos;
     std::vector<std::string> pn;
     
-    for (int i = 0; i < 1; i ++) {
+    for (int i = 0; i < p_num; i ++) {
         std::tuple<int, int> p = std::make_tuple(i, 1);
         std::string p_name = "player" + std::to_string(i);
         pos.push_back(p);
@@ -67,6 +70,8 @@ int main() {
     std::vector<std::string> players_names;
     std::vector<std::vector<std::tuple<int, int>>> snakes;
     std::vector<std::vector<std::tuple<int, int>>> ladders;
+
+
 
     // test board generation time: 
     auto start = std::chrono::system_clock::now(); 
@@ -84,26 +89,29 @@ int main() {
     auto elapsed = end - start;
     std::cout << "Board Generation Time: " << elapsed.count() << '\n';
 
+
+
     // test game saving time: 
     auto start2 = std::chrono::system_clock::now(); 
 
-    game_obj.gameSave("./gameHistory/", "game2", 1000, 1000, pos, pn, obstracle_snake, obstracle_ladder);
+    game_obj.gameSave("./gameHistory/", his_name, 1000, 1000, pos, pn, obstracle_snake, obstracle_ladder);
 
     auto end2 = std::chrono::system_clock::now();
 
     auto elapsed2 = end2 - start2;
-    std::cout << "Game Saving Time" << elapsed2.count() << '\n';
+    std::cout << "Game Saving Time " << elapsed2.count() << '\n';
+
+
 
     // test game reloading time
     auto start3 = std::chrono::system_clock::now(); 
 
-    obj.gameReload("./gameHistory/", "game2", length, height, players, players_names, snakes, ladders);
+    game_obj.gameReload("./gameHistory/", his_name, length, height, players, players_names, snakes, ladders);
 
     auto end3 = std::chrono::system_clock::now();
 
     auto elapsed3 = end3 - start3;
-    std::cout << "Game Reloading Time" << elapsed3.count() << '\n';
-
+    std::cout << "Game Reloading Time " << elapsed3.count() << '\n';
 
     return 0;
 }
