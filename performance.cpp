@@ -1,8 +1,3 @@
-//#import <vector>
-
-
-//#include <iostream>
-
 import BoardDesign;
 import gameSaveReload;
 
@@ -17,9 +12,9 @@ using namespace std;
 
 
 int main() {
-    int size = 10;    // number of snakes   5  50 500 5000 50000
-    int p_num = 1;     // number of players
-    std::string his_name = "t1";      // game saving file name
+    int size = 5;    // number of snakes/ladders   5  50 500 5000 50000
+    int p_num = 10;     // number of players
+    std::string his_name = "t10_snl";      // game saving file name
     
     // variables used for game board generation
     std::vector<std::vector<std::tuple<int, int>>> obstracle_snake;
@@ -79,7 +74,7 @@ int main() {
 
     snl::Board board;
     //init the size of the board
-    int tot = board.setArea(1000, 1000);
+    int tot = board.setArea(size+10, size+10);
     
     std::cout << tot << "\n";
 
@@ -116,9 +111,3 @@ int main() {
 
     return 0;
 }
-
-
-
-///opt/homebrew/opt/llvm/bin/clang++ -std=c++2a -fmodules -c -fprebuilt-module-path=. --precompile board.cppm -o boarddesign.pcm
-///opt/homebrew/opt/llvm/bin/clang++ -std=c++20 -fmodules -c -fprebuilt-module-path=. module.cpp -o module.o
-//time /opt/homebrew/opt/llvm/bin/clang++ -std=c++2a -fmodules -o module module.o *.pcm
