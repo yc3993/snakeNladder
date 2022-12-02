@@ -87,7 +87,7 @@ int main() {
 
     auto end = std::chrono::system_clock::now();
     auto elapsed = end - start;
-    std::cout << "Board Generation Time: " << elapsed.count() << '\n';
+    std::cout << "Board Generation Time: " << std::chrono::duration_cast<chrono::milliseconds>elapsed.count() << 'ms \n';
 
 
 
@@ -99,7 +99,7 @@ int main() {
     auto end2 = std::chrono::system_clock::now();
 
     auto elapsed2 = end2 - start2;
-    std::cout << "Game Saving Time " << elapsed2.count() << '\n';
+    std::cout << "Game Saving Time " << std::chrono::duration_cast<chrono::milliseconds>elapsed2.count() << 'ms \n';
 
 
 
@@ -111,7 +111,7 @@ int main() {
     auto end3 = std::chrono::system_clock::now();
 
     auto elapsed3 = end3 - start3;
-    std::cout << "Game Reloading Time " << elapsed3.count() << '\n';
+    std::cout << "Game Reloading Time " << std::chrono::duration_cast<chrono::milliseconds>elapsed3.count() << 'ms \n';
 
     return 0;
 }
