@@ -8,7 +8,7 @@ import "string";
 int main() {
     GameSaveAndReload::Save_Reload o;
     MYSQL_CONN::mysql_transaction obj;
-    MYSQL_CuONN::connection_details mysql_info;
+    MYSQL_CONN::connection_details mysql_info;
     mysql_info.server = "localhost";
     mysql_info.user = "root";
     mysql_info.password = "442473034Aa@";
