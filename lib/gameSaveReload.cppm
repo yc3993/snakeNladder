@@ -16,6 +16,7 @@ class Save_Reload {
                         std::vector<std::tuple<int, int>>& players, std::vector<std::string>& players_names, 
                         std::vector<std::vector<std::tuple<int, int>>>& snakes, 
                         std::vector<std::vector<std::tuple<int, int>>>& ladders);
+        bool gameSave_int()
         std::vector<std::string> listGameHistory(std::string add);
         bool removeHistory(std::string add, std::string name);
         bool gameReload(std::string add, std::string name, int& length, int& height,
