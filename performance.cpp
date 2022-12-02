@@ -17,9 +17,10 @@ using namespace std;
 
 
 int main() {
-    int size = 100;
-    int p_num = 4;
-    std::string his_name = "game3";
+    int size = 100;    // number of snakes
+    int p_num = 4;     // number of players
+    std::string his_name = "game3";      // game saving file name
+    
     // variables used for game board generation
     std::vector<std::vector<std::tuple<int, int>>> obstracle_snake;
     for (int i = 0; i < size; i ++) {
