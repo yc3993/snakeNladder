@@ -120,9 +120,6 @@ int main(){
         p1 = p1 + r;
         p1 = check(p1, s1, s2, s3, l1, l2, l3, t1, t2, t3);
         cout << "Player1 now at position " << p1 << endl;
-
-
-
     }
 
 
