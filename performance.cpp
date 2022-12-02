@@ -4,6 +4,7 @@
 //#include <iostream>
 
 import BoardDesign;
+import gameSaveReload;
 
 import "iostream";
 import "map";
@@ -16,6 +17,7 @@ using namespace std;
 
 
 int main() {
+    // variables used for game board generation
     std::vector<std::vector<std::tuple<int, int>>> obstracle_snake;
     for (int i = 0; i < 500; i ++) {
         std::vector<std::tuple<int, int>> node;
@@ -46,6 +48,26 @@ int main() {
     //}
     }
 
+    // variables used for saving
+    GameSaveAndReload::Save_Reload game_obj;
+    std::vector<std::tuple<int, int>> pos;
+    std::vector<std::string> pn;
+    
+    for (int i = 0; i < 1; i ++) {
+        std::tuple<int, int> p = std::make_tuple(i, 1);
+        std::string p_name = "player" + std::to_string(i);
+        pos.push_back(p);
+        pn.push_back(p_name);
+    }
+    
+    // variables used for reloading
+    int height;
+    int length;
+    std::vector<std::tuple<int, int>> players;
+    std::vector<std::string> players_names;
+    std::vector<std::vector<std::tuple<int, int>>> snakes;
+    std::vector<std::vector<std::tuple<int, int>>> ladders;
+
     // test board generation time: 
     auto start = std::chrono::system_clock::now(); 
 
@@ -65,6 +87,8 @@ int main() {
     // test game saving time: 
     auto start2 = std::chrono::system_clock::now(); 
 
+    game_obj.gameSave("./gameHistory/", "game2", 1000, 1000, pos, pn, obstracle_snake, obstracle_ladder);
+
     auto end2 = std::chrono::system_clock::now();
 
     auto elapsed2 = end2 - start2;
@@ -72,6 +96,8 @@ int main() {
 
     // test game reloading time
     auto start3 = std::chrono::system_clock::now(); 
+
+    obj.gameReload("./gameHistory/", "game2", length, height, players, players_names, snakes, ladders);
 
     auto end3 = std::chrono::system_clock::now();
 
