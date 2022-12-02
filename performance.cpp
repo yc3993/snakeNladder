@@ -17,7 +17,7 @@ using namespace std;
 
 
 int main() {
-    int size = 100;    // number of snakes
+    int size = 10;    // number of snakes   10  100 1000 10000 100000
     int p_num = 4;     // number of players
     std::string his_name = "game3";      // game saving file name
     
@@ -95,7 +95,7 @@ int main() {
     // test game saving time: 
     auto start2 = std::chrono::system_clock::now(); 
 
-    game_obj.gameSave("./gameHistory/", his_name, 1000, 1000, pos, pn, obstracle_snake, obstracle_ladder);
+    game_obj.gameSave("./gameHistory/test/", his_name, 1000, 1000, pos, pn, obstracle_snake, obstracle_ladder);
 
     auto end2 = std::chrono::system_clock::now();
 
@@ -107,7 +107,7 @@ int main() {
     // test game reloading time
     auto start3 = std::chrono::system_clock::now(); 
 
-    game_obj.gameReload("./gameHistory/", his_name, length, height, players, players_names, snakes, ladders);
+    game_obj.gameReload("./gameHistory/test/", his_name, length, height, players, players_names, snakes, ladders);
 
     auto end3 = std::chrono::system_clock::now();
 
