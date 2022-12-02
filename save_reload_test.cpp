@@ -6,7 +6,7 @@ import "tuple";
 
 int main() {
     GameSaveAndReload::Save_Reload obj;
-    /*
+
     for (std::string r : obj.listGameHistory("./gameHistory/")) {
         std::cout << r << "\n";
     }
@@ -29,32 +29,26 @@ int main() {
     pn.push_back(p2_name);
 
     snake1.push_back(std::make_tuple(0, 0));
-    snake1.push_back(std::make_tuple(0, 1));
     snake1.push_back(std::make_tuple(1, 1));
 
     snake2.push_back(std::make_tuple(3, 0));
-    snake2.push_back(std::make_tuple(3, 1));
     snake2.push_back(std::make_tuple(3, 2));
 
     snakes.push_back(snake1);
     snakes.push_back(snake2);
 
     ladder1.push_back(std::make_tuple(2, 0));
-    ladder1.push_back(std::make_tuple(2, 1));
     ladder1.push_back(std::make_tuple(2, 2));
 
     ladder2.push_back(std::make_tuple(4, 0));
-    ladder2.push_back(std::make_tuple(4, 1));
-    ladder2.push_back(std::make_tuple(4, 2));
     ladder2.push_back(std::make_tuple(10, 2));
-    ladder2.push_back(std::make_tuple(18, 8));
 
     ladders.push_back(ladder1);
     ladders.push_back(ladder2);  
 
 
-    std::cout << obj.gameSave("./gameHistory/", "game3", 20, 10, pos, pn, snakes, ladders);
-    */
+    std::cout << obj.gameSave("./gameHistory/", "game1", 20, 20, pos, pn, snakes, ladders);
+    /*
 
     int length;
     int height;
@@ -80,5 +74,6 @@ int main() {
         }
         std::cout << "\n";
     }
+    */
 
 }
