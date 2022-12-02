@@ -17,9 +17,9 @@ using namespace std;
 
 
 int main() {
-    int size = 10;    // number of snakes   10  100 1000 10000 100000
-    int p_num = 4;     // number of players
-    std::string his_name = "game3";      // game saving file name
+    int size = 10;    // number of snakes   5  50 500 5000 50000
+    int p_num = 1;     // number of players
+    std::string his_name = "t1";      // game saving file name
     
     // variables used for game board generation
     std::vector<std::vector<std::tuple<int, int>>> obstracle_snake;
@@ -88,7 +88,7 @@ int main() {
 
     auto end = std::chrono::system_clock::now();
     auto elapsed = end - start;
-    std::cout << "Board Generation Time: " << std::chrono::duration_cast<chrono::milliseconds>elapsed.count() << 'ms \n';
+    std::cout << "Board Generation Time: " << elapsed.count() << " ns" << "\n";
 
 
 
@@ -100,7 +100,7 @@ int main() {
     auto end2 = std::chrono::system_clock::now();
 
     auto elapsed2 = end2 - start2;
-    std::cout << "Game Saving Time " << std::chrono::duration_cast<chrono::milliseconds>elapsed2.count() << 'ms \n';
+    std::cout << "Game Saving Time " << elapsed2.count() << " ns" << "\n";
 
 
 
@@ -112,7 +112,7 @@ int main() {
     auto end3 = std::chrono::system_clock::now();
 
     auto elapsed3 = end3 - start3;
-    std::cout << "Game Reloading Time " << std::chrono::duration_cast<chrono::milliseconds>elapsed3.count() << 'ms \n';
+    std::cout << "Game Reloading Time " << elapsed3.count() << " ns" << "\n";
 
     return 0;
 }
