@@ -46,6 +46,7 @@ int main() {
     //}
     }
 
+    // test board generation time: 
     auto start = std::chrono::system_clock::now(); 
 
     snl::Board board;
@@ -59,8 +60,24 @@ int main() {
 
     auto end = std::chrono::system_clock::now();
     auto elapsed = end - start;
-    std::cout << elapsed.count() << '\n';
-    
+    std::cout << "Board Generation Time: " << elapsed.count() << '\n';
+
+    // test game saving time: 
+    auto start2 = std::chrono::system_clock::now(); 
+
+    auto end2 = std::chrono::system_clock::now();
+
+    auto elapsed2 = end2 - start2;
+    std::cout << "Game Saving Time" << elapsed2.count() << '\n';
+
+    // test game reloading time
+    auto start3 = std::chrono::system_clock::now(); 
+
+    auto end3 = std::chrono::system_clock::now();
+
+    auto elapsed3 = end3 - start3;
+    std::cout << "Game Reloading Time" << elapsed3.count() << '\n';
+
 
     return 0;
 }
