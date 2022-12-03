@@ -1,7 +1,7 @@
 #include <iostream>
-#include <string">
-#include <vector">
-#include <tuple">
+#include <string>
+#include <vector>
+#include <tuple>
 #include </usr/local/mysql/include/mysql.h>
 
 // compile using clang++ -std=c++20 main.cpp -L/usr/local/mysql-8.0.29-macos12-arm64/lib/ -lmysqlclient -o main
