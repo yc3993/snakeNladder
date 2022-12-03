@@ -1,5 +1,3 @@
-export module BoardDesign;
-
 #include <map>
 #include <tuple>
 #include <vector>
