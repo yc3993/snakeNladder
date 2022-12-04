@@ -1,5 +1,3 @@
-
-
 class Dice {
     public:
         int getNum(int max_val);
