@@ -3,7 +3,6 @@ import "iostream";
 import "vector";
 import "tuple";
 
-
 int main() {
     // initialize variables for reloading
     int length;
@@ -12,8 +11,6 @@ int main() {
     std::vector<std::string> players_names;
     std::vector<std::vector<std::tuple<int, int>>> snakes;
     std::vector<std::vector<std::tuple<int, int>>> ladders;
-
-
 
     // reloading...
     GameSaveAndReload::Save_Reload obj;
