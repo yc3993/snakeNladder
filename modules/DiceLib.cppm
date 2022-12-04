@@ -6,6 +6,7 @@ import "unistd.h";
 export namespace DiceLib{
     class Dice {
         public:
+            int getNum_with_pause(int max_val);
             int getNum(int max_val);
             
         private:
@@ -26,7 +27,7 @@ export namespace DiceLib{
         }
     }
 
-    int Dice::getNum(int max_val) {
+    int Dice::getNum_with_pause(int max_val) {
         srand(time(NULL));
         int dice = 1 + std::rand()%max_val;
 
@@ -46,6 +47,12 @@ export namespace DiceLib{
             dice ++;
         }
 
+        return dice;
+    }
+
+    int Dice::getNum(int max_val) {
+        srand(time(NULL));
+        int dice = 1 + std::rand()%max_val;
         return dice;
     }
 }
