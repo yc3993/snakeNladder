@@ -90,7 +90,7 @@ int main() {
     // test game saving time: 
     auto start2 = std::chrono::system_clock::now(); 
 
-    game_obj.gameSave("./gameHistory/test/", his_name, 1000, 1000, pos, pn, obstracle_snake, obstracle_ladder);
+    game_obj.gameSave("./lib_test/test_savings/", his_name, 1000, 1000, pos, pn, obstracle_snake, obstracle_ladder);
 
     auto end2 = std::chrono::system_clock::now();
 
@@ -102,7 +102,7 @@ int main() {
     // test game reloading time
     auto start3 = std::chrono::system_clock::now(); 
 
-    game_obj.gameReload("./gameHistory/test/", his_name, length, height, players, players_names, snakes, ladders);
+    game_obj.gameReload("./lib_test/test_savings/", his_name, length, height, players, players_names, snakes, ladders);
 
     auto end3 = std::chrono::system_clock::now();
 
