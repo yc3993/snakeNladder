@@ -30,7 +30,7 @@ int main() {
     for (int i=0; i<a.size(); i++) {
         std::cout << a[i] << "\n";
     }
-    for (int i=0; i<a.size(); i++) {
+    for (int i=0; i<res.size(); i++) {
         std::cout << std::get<0>(res[i]) << "   " << std::get<1>(res[i]) << "\n";
     }
 
