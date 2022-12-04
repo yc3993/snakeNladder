@@ -19,6 +19,7 @@ include_directories(${FULL_PATH_TO_MYSQL_CONNECTOR_CPP_DIR}/include/cppconn)
 link_directories(${FULL_PATH_TO_MYSQL_CONNECTOR_CPP_DIR}/lib)
 add_executable(cm cm.cpp)
 target_link_libraries(cm curl mysqlclient)
+target_link_libraries(cm curl ncurses)
 target_compile_features(cm PRIVATE cxx_range_for)
 
 
