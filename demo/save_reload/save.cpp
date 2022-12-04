@@ -3,7 +3,6 @@ import "iostream";
 import "vector";
 import "tuple";
 
-
 int main() {
     // generate test data
     int length = 20;
@@ -39,7 +38,6 @@ int main() {
     ladder2.push_back(std::make_tuple(10, 2));
     ladders.push_back(ladder1);
     ladders.push_back(ladder2); 
-
 
 
 
