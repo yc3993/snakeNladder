@@ -13,8 +13,8 @@ using namespace std;
 
 int main() {
     int size = 5;    // number of snakes/ladders   5  50 500 5000 50000
-    int p_num = 10;     // number of players
-    std::string his_name = "t10_snl";      // game saving file name
+    int p_num = 100000;     // number of players
+    std::string his_name = "t100000_p";      // game saving file name
     
     // variables used for game board generation
     std::vector<std::vector<std::tuple<int, int>>> obstracle_snake;
