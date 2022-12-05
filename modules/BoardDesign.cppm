@@ -11,16 +11,16 @@ using namespace std;
 export namespace snl {
 class Board {
     public:
+    //parameters of the game board
         int length = 0;
-        int height = 0;        
+        int height = 0;  
+        int size = 1;      
         std::map<tuple<int, int>, tuple<int, int>> snake;
-        std::map<tuple<int, int>, tuple<int, int>> ladder;
-        int size = 1;        
+        std::map<tuple<int, int>, tuple<int, int>> ladder;                
         std::map<int, int> snake_int;
         std::map<int, int> ladder_int;
         std::vector<std::tuple<int, int>> ui_snake;
         std::vector<std::tuple<int, int>> ui_ladder;
-        //std::map<tuple, tuple> ladder;  
           
 
         int setArea(int n, int m);     
