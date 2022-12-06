@@ -8,9 +8,7 @@
 #include <cstdlib>
 #include <iostream>
 
-using namespace std;
 
-export namespace snl {
 class Board {
     public:
         int length = 0;
@@ -551,7 +549,7 @@ bool gameReload_int(std::string add, std::string name, int& length, int& height,
         return false;
     }
 }
-}
+
 
 
 
