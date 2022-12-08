@@ -31,7 +31,7 @@ export namespace DiceLib{
         srand(time(NULL));
         int dice = 1 + std::rand()%max_val;
 
-        initscr();
+        initscr();  // init screem
         cbreak();
         noecho();
         nodelay(stdscr, TRUE);
