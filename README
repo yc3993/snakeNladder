@@ -1,3 +1,130 @@
 Design with C++
 
 Buiding library for snake and ladder game. Implemented with modern c++ elements including template and module. With toturial of game application based on the library. 
+
+<h1> toturial <\h1>
+
+    To illustrate library usage, we have created a tutorial game. A full stack example can be found in our main.cpp file.
+
+    Step1. 
+    For a designer who wish to create a snake and ladder game, he / she can start a basic game as follows:
+    
+    // Creating a main function and import backend modules
+    import BoardDesign;
+    import DiceLib;
+    import MYSQLLib;
+    import gameSaveReload;
+    
+    Before the designers can run the game, they need to define some game information.
+    Create a game board and define the size, the position and other information for the game:
+    snl::Board board;
+    int tot = board.setArea(10, 10); // we are creating a 10 * 10 board
+    // randomly generate the position for snake and ladder
+    board.random_insert_snake()
+    board.random_insert_ladder()
+    After these two functions, the position is stored inside the class, the function will make sure the position is legal, a bool marking success and a text output. 
+    
+    // or he can design his own board with a vector containing the position
+    board.setSnake_int(obstacle_snake);
+    board.setLadder_int(obstacle_ladder);
+    // other methods including addObj_int, deleteObj_int can help the user to initialize the game board easily.
+    
+    The designer can check the information in board.ui_snake or board.snake.
+    std::cout << "position of snake: " << get<0>(board.ui_snake[0]) << ", " << get<1>(board.ui_snake[0]) << "\n";
+    All of the information will be stored in the class Board. 
+    
+    Step2. 
+    After the designers init the board, they would probably like to register for the game so they can store the game information and their user information for future reference. In order to add registration and login service, and also allow users to check their combat history, designers need to create a Database, then use the MYSQLLib we provide. The designers can create two tables to realize these functionalities, one is users table and the other is combat_history table. Designers can give any name to their tables and columns, as long as it contains the important information. For the user table, it should contain a column for username, and a column for password. When it comes to the combat history table, it should have a ranking column and a username column. 
+    
+    First of all, you should establish a connection to mysql server. Connection establishment is built into the MySQL Lib:
+    mysql.mysql_connection_setup(struct connnection_details info);
+    
+    Here is an example to create a connection.
+    MYSQL_CONN::connection_details info;
+    info.server = “localhost”;
+    info.user = “root”;
+    info.password = “123”;
+    info.database = “test_db”;
+    MYSQL_CONN::mysql_transaction mysql;
+    mysql.mysql_connection_setup(info);
+    
+    To add a registration service, designers can just use:
+    mysql.mysql_registration(std::string uname, std::string pwd, std::string table_name, std::string uname_colname, std::string pwd_colname);
+    uname: username you want to set
+    pwd: password you want to set
+    table_name: the name of the table in your DB that stores users’ information
+    uname_colname: the name of the column  that stores username
+    pwd_colname:  the name of the column  that stores password
+    
+    A boolean variable will be returned, that represents the successfulness of the registration.
+    
+    To login, designers can just use:
+    mysql.mysql_login(std::string uname, std::string pwd, std::string table_name, std::string uname_colname, std::string pwd_colname);
+    uname: login username
+    pwd: login password 
+    table_name: the name of the table in your DB that stores users’ information
+    uname_colname: the name of the column  that stores username
+    pwd_colname:  the name of the column  that stores password
+    
+    A boolean variable will be returned, that represents the successfulness of the login attempt.
+    
+    To store a game results into the DB, designers can simply put the game results(rankings) into a vector, and use the following method:
+    mysql.mysql_history_insetion(std::vector<std::string> rankings, std::string table_name, std::string uname_colname, std::string rankings_colname);
+    rankings: A vector consists of usernames. It is the rank of each players in one game, ranks in decreasing order (winner is the first item in the vector).
+    table_name: The table in DB that stores the combat history.
+    rankings_colname: The name of the column that stores the rankings.
+    
+    A boolean variable will be returned, that represents the successfulness of the sql transaction.
+    
+    To check the combat history of a user, designers can use:
+    mysql.mysql_check_history(std::string table_name, std::string uname_colname, std::string rankings_colname);
+    
+    A vector consists of strings, which represents the rankings of each player. It is also ordered decreasingly (The winner is the first item in the vector)
+    
+    Step3. 
+    This is enough for a basic game. Then we can start the game in our frontend.
+    Add tutorial for creating a new game in UI
+    
+    Step4. 
+    We also provide dice functions for designers. To achieve more generality, the designer can set the dice at the beginning. The default dice is from 1 - 6, but you can design any dice as you want. If you are using the frontend, there is a button for you to roll a dice. However, if you are using a terminal or other frontend system, the tutorial is shown below.
+    DiceLib::Dice
+    Dice.getNum_with_pause(max_num);
+    The function will clear your screen and wait for you to enter any key to roll a dice. 
+    
+    Step5. 
+    Finally, if we want to store the game. We can use our function to store the basic information in a .txt file. If you are using the frontend, there is a button for you to save the game history and reload the game. However, if you are using a terminal or other frontend system, the tutorial is shown below.
+    //Creating the save and load class
+    GameSaveAndReload::Save_Reload
+    
+    // Since we store the basic information in Board.board, we can just call the class and add several user information. 
+    
+    GameSaveAndReload::Save_Reload sr 
+    sr.gameSave($path, $name, board.length, board.height, players, players_names, board.ui_snakes, board.ui_ladders);
+    Players : the position for all the players
+    Players_names: the name of all players
+    std::vector<std::tuple<int, int>>& players, std::vector<std::string>& players_names,
+    
+    a bool marking success. 
+    
+    // Loading the game
+    sr.gameReload(&path, $name, int& length, int& height, std::vector<std::tuple<int, int>>& players, std::vector<std::string>& players_names, board.ui_snakes, board.ui_ladders);
+    
+    a bool marking success. 
+    Then, all the information will be stored in the class Board. 
+    
+    bool removeHistory(std::string add, std::string name); Can help the designer to remove history easily. 
+    
+    Running Command
+     /opt/homebrew/opt/llvm/bin/clang++ -std=c++20 -xc++-system-header --precompile iostream -o iostream.pcm 
+          (For Clang on macOS users, since clang currently does not fully support modules. We need to generate the iostream module file.)
+    /opt/homebrew/opt/llvm/bin/clang++ -std=c++2a -fmodules -c -fprebuilt-module-path=. --precompile boardDesign.cppm -o boardDesign.pcm // generate boardDesign module file
+    /opt/homebrew/opt/llvm/bin/clang++ -std=c++2a -fmodules -c -fprebuilt-module-path=. --precompile DiceLib.cppm -o DiceLib.pcm // generate DiceLib module file
+    /opt/homebrew/opt/llvm/bin/clang++ -std=c++2a -fmodules -c -fprebuilt-module-path=. --precompile gameSaveReload.cppm -o gameSaveReload.pcm // generate gameSaveReload module file
+    /opt/homebrew/opt/llvm/bin/clang++ -std=c++20 -fmodules -c -fprebuilt-module-path=. main.cpp -o main.o
+    /opt/homebrew/opt/llvm/bin/clang++ -std=c++2a -fmodules -lncurses -o main main.o *.pcm
+    
+    
+    
+    
+    
+    
