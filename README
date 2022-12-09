@@ -2,7 +2,7 @@ Design with C++
 
 Buiding library for snake and ladder game. Implemented with modern c++ elements including template and module. With toturial of game application based on the library. 
 
-<h1> toturial <\h1>
+Toturial 
 
     To illustrate library usage, we have created a tutorial game. A full stack example can be found in our main.cpp file.
 
